@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GrantTrack - Login</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login-body">
+
+    <div class="login-container">
+
+        <div class="login-logo">
+            GT
+        </div>
+
+        <h1>GrantTrack</h1>
+
+        <p class="login-subtitle">
+            Grant Management System
+        </p>
+
+        <div class="login-card">
+
+            <h2>Sign In</h2>
+
+            <p class="login-description">
+                Login to continue to GrantTrack
+            </p>
+
+            <form id="loginForm">
+
+                <label for="username">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter username"
+                    required
+                >
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter password"
+                    required
+                >
+
+                <button type="submit" class="login-button">
+                    Login
+                </button>
+
+                <p id="loginError" class="login-error"></p>
+
+            </form>
+
+        </div>
+
+        <p class="login-footer">
+            GrantTrack v1.0
+        </p>
+
+    </div>
+
+    <script src="login.js"></script>
+
+</body>
+
+</html>

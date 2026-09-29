@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>GrantTrack | Grant Management System</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-mark">
+                GT
+            </div>
+
+            <div>
+                <h1>GrantTrack</h1>
+                <span>Grant Management</span>
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <button
+                class="nav-item active"
+                data-section="dashboard">
+
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-section="faculty">
+
+                <span class="nav-icon">◉</span>
+                <span>Faculty</span>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-section="applications">
+
+                <span class="nav-icon">▤</span>
+                <span>Applications</span>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-section="expenditure">
+
+                <span class="nav-icon">₹</span>
+                <span>Expenditure</span>
+
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <div class="connection-small">
+                <span
+                    id="sidebarConnectionDot"
+                    class="connection-dot">
+                </span>
+
+                <span id="sidebarConnectionText">
+                    Connecting...
+                </span>
+            </div>
+
+            <p>GrantTrack v1.0</p>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h2 id="pageTitle">
+                    Dashboard
+                </h2>
+
+                <p id="pageSubtitle">
+                    Overview of your grant management system
+                </p>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="connection-status">
+
+                    <span
+                        id="connectionDot"
+                        class="connection-dot">
+                    </span>
+
+                    <span id="connectionText">
+                        Connecting...
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =========================================
+             DASHBOARD
+        ========================================== -->
+
+        <section
+            id="dashboard"
+            class="page-section active-section">
+
+
+            <!-- STATISTICS -->
+
+            <div class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        ◉
+                    </div>
+
+                    <div>
+
+                        <p>Total Faculty</p>
+
+                        <h3 id="facultyCount">
+                            0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        ▤
+                    </div>
+
+                    <div>
+
+                        <p>Total Applications</p>
+
+                        <h3 id="applicationCount">
+                            0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <p>Approved Grants</p>
+
+                        <h3 id="approvedCount">
+                            0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        ₹
+                    </div>
+
+                    <div>
+
+                        <p>Total Requested</p>
+
+                        <h3 id="requestedTotal">
+                            ₹0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RECENT APPLICATIONS -->
+
+            <div class="content-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Recent Grant Applications
+                        </h3>
+
+                        <p>
+                            Latest applications submitted
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="primary-button"
+                        id="dashboardApplicationsButton">
+
+                        View Applications
+
+                    </button>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Title</th>
+
+                                <th>Faculty</th>
+
+                                <th>Requested</th>
+
+                                <th>Approved</th>
+
+                                <th>Status</th>
+
+                                <th>Deadline</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="dashboardApplicationBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="7"
+                                    class="loading">
+
+                                    Loading applications...
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             FACULTY
+        ========================================== -->
+
+        <section
+            id="faculty"
+            class="page-section">
+
+
+            <div class="content-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Faculty Management
+                        </h3>
+
+                        <p>
+                            Add, update and manage faculty members
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="primary-button"
+                        id="addFacultyButton">
+
+                        + Add Faculty
+
+                    </button>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Name</th>
+
+                                <th>Email</th>
+
+                                <th>Department</th>
+
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="facultyTableBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="5"
+                                    class="loading">
+
+                                    Loading faculty...
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             APPLICATIONS
+        ========================================== -->
+
+        <section
+            id="applications"
+            class="page-section">
+
+
+            <div class="content-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Grant Applications
+                        </h3>
+
+                        <p>
+                            Manage grant applications and stages
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="primary-button"
+                        id="addApplicationButton">
+
+                        + New Application
+
+                    </button>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Title</th>
+
+                                <th>Faculty</th>
+
+                                <th>Requested</th>
+
+                                <th>Approved</th>
+
+                                <th>Status</th>
+
+                                <th>Deadline</th>
+
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="applicationTableBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="8"
+                                    class="loading">
+
+                                    Loading applications...
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             EXPENDITURE
+        ========================================== -->
+
+        <section
+            id="expenditure"
+            class="page-section">
+
+
+            <div class="content-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Expenditure Management
+                        </h3>
+
+                        <p>
+                            Track expenditure for approved grants
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="expenditure-selector">
+
+                    <label>
+                        Select Application
+                    </label>
+
+                    <select id="expenditureApplicationSelect">
+
+                        <option value="">
+                            Select an application
+                        </option>
+
+                    </select>
+
+
+                    <button
+                        class="primary-button"
+                        id="loadExpenditureButton">
+
+                        View Expenditure
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="expenditureSummary"
+                    class="expenditure-summary hidden">
+
+
+                    <div class="summary-box">
+
+                        <span>
+                            Approved Amount
+                        </span>
+
+                        <strong id="approvedAmountDisplay">
+                            ₹0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-box">
+
+                        <span>
+                            Total Spent
+                        </span>
+
+                        <strong id="totalExpenditureDisplay">
+                            ₹0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-box">
+
+                        <span>
+                            Remaining
+                        </span>
+
+                        <strong id="remainingAmountDisplay">
+                            ₹0
+                        </strong>
+
+                    </div>
+
+
+                    <button
+                        class="primary-button"
+                        id="addExpenditureButton">
+
+                        + Add Expenditure
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="expenditureTableContainer"
+                    class="table-container hidden">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Description</th>
+
+                                <th>Amount</th>
+
+                                <th>Date</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="expenditureTableBody">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================================
+     FACULTY MODAL
+========================================== -->
+
+<div
+    id="facultyModal"
+    class="modal">
+
+
+    <div class="modal-content">
+
+
+        <div class="modal-header">
+
+            <div>
+
+                <h3 id="facultyModalTitle">
+                    Add Faculty
+                </h3>
+
+                <p>
+                    Enter faculty information
+                </p>
+
+            </div>
+
+
+            <button
+                class="close-button"
+                data-close="facultyModal">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <form id="facultyForm">
+
+            <input
+                type="hidden"
+                id="facultyId">
+
+
+            <div class="form-group">
+
+                <label>
+                    Faculty Name
+                </label>
+
+                <input
+                    type="text"
+                    id="facultyName"
+                    placeholder="Enter faculty name"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="facultyEmail"
+                    placeholder="faculty@college.com"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Department
+                </label>
+
+                <input
+                    type="text"
+                    id="facultyDepartment"
+                    placeholder="EEE"
+                    required>
+
+            </div>
+
+
+            <div
+                id="facultyMessage"
+                class="form-message">
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    data-close="facultyModal">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="primary-button">
+
+                    Save Faculty
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     APPLICATION MODAL
+========================================== -->
+
+<div
+    id="applicationModal"
+    class="modal">
+
+
+    <div class="modal-content large-modal">
+
+
+        <div class="modal-header">
+
+            <div>
+
+                <h3 id="applicationModalTitle">
+                    New Grant Application
+                </h3>
+
+                <p>
+                    Enter grant application details
+                </p>
+
+            </div>
+
+
+            <button
+                class="close-button"
+                data-close="applicationModal">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <form id="applicationForm">
+
+            <input
+                type="hidden"
+                id="applicationId">
+
+
+            <div class="form-group">
+
+                <label>
+                    Faculty
+                </label>
+
+                <select
+                    id="applicationFaculty"
+                    required>
+
+                    <option value="">
+                        Select faculty
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Grant Title
+                </label>
+
+                <input
+                    type="text"
+                    id="applicationTitle"
+                    placeholder="Enter grant title"
+                    required>
+
+            </div>
+
+
+            <div class="form-row">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Requested Amount
+                    </label>
+
+                    <input
+                        type="number"
+                        id="requestedAmount"
+                        min="1"
+                        step="0.01"
+                        placeholder="150000"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Approved Amount
+                    </label>
+
+                    <input
+                        type="number"
+                        id="approvedAmount"
+                        min="0"
+                        step="0.01"
+                        placeholder="150000">
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Utilization Deadline
+                </label>
+
+                <input
+                    type="date"
+                    id="utilizationDeadline"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Abstract
+                </label>
+
+                <textarea
+                    id="abstractText"
+                    rows="5"
+                    placeholder="Enter project abstract"
+                    required>
+                </textarea>
+
+            </div>
+
+
+            <div
+                id="applicationMessage"
+                class="form-message">
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    data-close="applicationModal">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="primary-button">
+
+                    Save Application
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     STAGE MODAL
+========================================== -->
+
+<div
+    id="stageModal"
+    class="modal">
+
+
+    <div class="modal-content">
+
+
+        <div class="modal-header">
+
+            <div>
+
+                <h3>
+                    Update Application Stage
+                </h3>
+
+                <p>
+                    Change the current application stage
+                </p>
+
+            </div>
+
+
+            <button
+                class="close-button"
+                data-close="stageModal">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <form id="stageForm">
+
+            <input
+                type="hidden"
+                id="stageApplicationId">
+
+
+            <div class="form-group">
+
+                <label>
+                    Stage
+                </label>
+
+                <select
+                    id="stageStatus"
+                    required>
+
+                    <option value="SUBMITTED">
+                        SUBMITTED
+                    </option>
+
+                    <option value="UNDER_REVIEW">
+                        UNDER REVIEW
+                    </option>
+
+                    <option value="APPROVED">
+                        APPROVED
+                    </option>
+
+                    <option value="REJECTED">
+                        REJECTED
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Remarks
+                </label>
+
+                <textarea
+                    id="stageRemarks"
+                    rows="4"
+                    placeholder="Enter remarks">
+                </textarea>
+
+            </div>
+
+
+            <div
+                id="stageMessage"
+                class="form-message">
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    data-close="stageModal">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="primary-button">
+
+                    Update Stage
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     EXPENDITURE MODAL
+========================================== -->
+
+<div
+    id="expenditureModal"
+    class="modal">
+
+
+    <div class="modal-content">
+
+
+        <div class="modal-header">
+
+            <div>
+
+                <h3>
+                    Add Expenditure
+                </h3>
+
+                <p>
+                    Record grant expenditure
+                </p>
+
+            </div>
+
+
+            <button
+                class="close-button"
+                data-close="expenditureModal">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <form id="expenditureForm">
+
+
+            <div class="form-group">
+
+                <label>
+                    Amount
+                </label>
+
+                <input
+                    type="number"
+                    id="expenditureAmount"
+                    min="0.01"
+                    step="0.01"
+                    placeholder="25000"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Description
+                </label>
+
+                <textarea
+                    id="expenditureDescription"
+                    rows="4"
+                    placeholder="Enter expenditure description"
+                    required>
+                </textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Expenditure Date
+                </label>
+
+                <input
+                    type="date"
+                    id="expenditureDate">
+
+            </div>
+
+
+            <div
+                id="expenditureMessage"
+                class="form-message">
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    data-close="expenditureModal">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="primary-button">
+
+                    Save Expenditure
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     DETAILS MODAL
+========================================== -->
+
+<div
+    id="detailsModal"
+    class="modal">
+
+
+    <div class="modal-content large-modal">
+
+
+        <div class="modal-header">
+
+            <div>
+
+                <h3>
+                    Application Details
+                </h3>
+
+                <p>
+                    Grant application information
+                </p>
+
+            </div>
+
+
+            <button
+                class="close-button"
+                data-close="detailsModal">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div id="applicationDetails">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
